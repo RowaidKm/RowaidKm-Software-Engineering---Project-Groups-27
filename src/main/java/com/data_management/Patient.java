@@ -24,6 +24,13 @@ public class Patient {
         this.patientRecords = new ArrayList<>();
     }
 
+<<<<<<< HEAD
+=======
+    public int getPatientId(){
+        return this.patientId;
+    }
+
+>>>>>>> 12fcfcb (Implementing Missing Functionality and Some Test Cases,Running Junit Test for some Classes and generating the Coverage REport)
     /**
      * Adds a new record to this patient's list of medical records.
      * The record is created with the specified measurement value, record type, and
@@ -52,6 +59,25 @@ public class Patient {
      *         range
      */
     public List<PatientRecord> getRecords(long startTime, long endTime) {
+<<<<<<< HEAD
         // TODO Implement and test this method
+=======
+        List<PatientRecord> recordsWithinRange = new ArrayList<>();
+        for (PatientRecord record : this.patientRecords) {
+            if (record.getTimestamp() >= startTime && record.getTimestamp() <= endTime) {
+                recordsWithinRange.add(record);
+            }
+        }
+        return recordsWithinRange;
+    }
+    
+    /** 
+     * * Retrieves a list of PatientRecord objects for this patient.
+     * 
+     * @return a list of all PatientRecord objects for this patient
+     */
+    public List<PatientRecord> getPatientRecords() {
+        return new ArrayList<>(patientRecords);
+>>>>>>> 12fcfcb (Implementing Missing Functionality and Some Test Cases,Running Junit Test for some Classes and generating the Coverage REport)
     }
 }

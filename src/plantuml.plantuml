@@ -1,0 +1,33 @@
+@startuml
+
+' Define classes with fields and methods
+class Patient {
+  - patientId : int
+  - patientRecords : List<PatientRecord>
+  
+  + Constructor(id : int)
+  + addRecord(record : PatientRecord) : void
+  + getRecords() : List<PatientRecord>
+}
+
+class DataStorage {
+  - patientMap : Map<Integer, Patient>
+  
+  + addPatient(patient : Patient) : void
+  + getPatient(patientId : int) : Patient
+  + getAllPatients() : List<Patient>
+}
+
+class AlertGenerator {
+  - randomGenerator : Random
+  
+  + generateAlert(data : PatientData) : Alert
+  + evaluateData(data : PatientData) : void
+}
+
+' Define relationships
+DataStorage "1" -- "*" Patient : contains
+AlertGenerator ..> DataStorage : interacts with
+AlertGenerator ..> Patient : generates alerts for
+
+@enduml

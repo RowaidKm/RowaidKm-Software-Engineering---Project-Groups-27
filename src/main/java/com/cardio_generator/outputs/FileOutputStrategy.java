@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
+<<<<<<< HEAD
+=======
+import java.nio.file.Paths;
+>>>>>>> 12fcfcb (Implementing Missing Functionality and Some Test Cases,Running Junit Test for some Classes and generating the Coverage REport)
 import java.nio.file.StandardOpenOption;
 import java.util.concurrent.ConcurrentHashMap;
 

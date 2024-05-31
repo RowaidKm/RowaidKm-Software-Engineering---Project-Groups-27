@@ -1,8 +1,16 @@
 package com.alerts;
 
+<<<<<<< HEAD
 import com.data_management.DataStorage;
 import com.data_management.Patient;
 
+=======
+
+import com.data_management.DataStorage;
+import com.data_management.Patient;
+
+
+>>>>>>> 12fcfcb (Implementing Missing Functionality and Some Test Cases,Running Junit Test for some Classes and generating the Coverage REport)
 /**
  * The {@code AlertGenerator} class is responsible for monitoring patient data
  * and generating alerts when certain predefined conditions are met. This class
@@ -11,6 +19,14 @@ import com.data_management.Patient;
  */
 public class AlertGenerator {
     private DataStorage dataStorage;
+<<<<<<< HEAD
+=======
+    private AlertManager alertManager;
+    private BloodPressureChecker bloodPressureChecker = new BloodPressureChecker(alertManager);
+    private BloodSaturationChecker bloodSaturationChecker = new BloodSaturationChecker(alertManager);
+    private CombinedAlertChecker combinedAlertChecker = new CombinedAlertChecker(alertManager);
+    private ECGDataChecker ecgDataChecker = new ECGDataChecker(alertManager);
+>>>>>>> 12fcfcb (Implementing Missing Functionality and Some Test Cases,Running Junit Test for some Classes and generating the Coverage REport)
 
     /**
      * Constructs an {@code AlertGenerator} with a specified {@code DataStorage}.
@@ -36,6 +52,19 @@ public class AlertGenerator {
      */
     public void evaluateData(Patient patient) {
         // Implementation goes here
+<<<<<<< HEAD
+=======
+        // Check for blood pressure trends
+        bloodPressureChecker.checkBloodPressureTrends(patient);
+        // Check for critical thresholds
+        bloodPressureChecker.checkBloodPressureThresholds(patient);
+        // Check for blood saturation levels
+        bloodSaturationChecker.checkBloodSaturationLevels(patient);
+         // Check for combined alerts
+         combinedAlertChecker.checkCombinedAlerts(patient);
+         // Chech for heart rate "ECG" alerts
+        ecgDataChecker.checkECGData(patient); 
+>>>>>>> 12fcfcb (Implementing Missing Functionality and Some Test Cases,Running Junit Test for some Classes and generating the Coverage REport)
     }
 
     /**
@@ -46,7 +75,16 @@ public class AlertGenerator {
      *
      * @param alert the alert object containing details about the alert condition
      */
+<<<<<<< HEAD
     private void triggerAlert(Alert alert) {
         // Implementation might involve logging the alert or notifying staff
     }
+=======
+    /**
+     * I made a seprate class for this method in "AlertManager.java" to follow the SOLID princible
+     */
+//     private void triggerAlert(Alert alert) {
+//         // Implementation might involve logging the alert or notifying staff
+//     }
+>>>>>>> 12fcfcb (Implementing Missing Functionality and Some Test Cases,Running Junit Test for some Classes and generating the Coverage REport)
 }
