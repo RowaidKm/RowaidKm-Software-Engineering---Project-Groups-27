@@ -1,37 +1,52 @@
 package com.alerts;
 
-// Represents an alert
+/**
+ * Represents an alert.
+ * This class encapsulates the details of an alert including the patient ID, the condition that triggered the alert,
+ * and the timestamp of when the alert was triggered.
+ */
 public class Alert {
-<<<<<<< HEAD
-    private String patientId;
-    private String condition;
-    private long timestamp;
 
-    public Alert(String patientId, String condition, long timestamp) {
-=======
-    private int patientId;
-    private String condition;
-    private long timestamp;
+    private int patientId; // The ID of the patient for whom the alert is generated
+    private String condition; // The condition that triggered the alert
+    private long timestamp; // The timestamp when the alert was triggered
 
+    /**
+     * Constructs an Alert object with the specified patient ID, condition, and timestamp.
+     * 
+     * @param patientId  The ID of the patient for whom the alert is generated.
+     * @param condition  The condition that triggered the alert.
+     * @param timestamp  The timestamp when the alert was triggered.
+     */
     public Alert(int patientId, String condition, long timestamp) {
->>>>>>> 12fcfcb (Implementing Missing Functionality and Some Test Cases,Running Junit Test for some Classes and generating the Coverage REport)
         this.patientId = patientId;
         this.condition = condition;
         this.timestamp = timestamp;
     }
 
-<<<<<<< HEAD
-    public String getPatientId() {
-=======
+    /**
+     * Returns the ID of the patient for whom the alert is generated.
+     * 
+     * @return The patient ID.
+     */
     public int getPatientId() {
->>>>>>> 12fcfcb (Implementing Missing Functionality and Some Test Cases,Running Junit Test for some Classes and generating the Coverage REport)
         return patientId;
     }
 
+    /**
+     * Returns the condition that triggered the alert.
+     * 
+     * @return The condition.
+     */
     public String getCondition() {
         return condition;
     }
 
+    /**
+     * Returns the timestamp when the alert was triggered.
+     * 
+     * @return The timestamp.
+     */
     public long getTimestamp() {
         return timestamp;
     }
