@@ -186,7 +186,7 @@ public class HealthDataSimulator {
      * @param period   The time between each execution.
      * @param timeUnit The time unit for the period.
      */
-    private static void scheduleTask(Runnable task, long period, TimeUnit timeUnit) {
+    static void scheduleTask(Runnable task, long period, TimeUnit timeUnit) {
         scheduler.scheduleAtFixedRate(task, random.nextInt(5), period, timeUnit);
     }
 }

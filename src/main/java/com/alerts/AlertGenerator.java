@@ -14,10 +14,10 @@ import com.data_management.Patient;
 public class AlertGenerator {
     private DataStorage dataStorage;
     private AlertManager alertManager;
-    private BloodPressureChecker bloodPressureChecker = new BloodPressureChecker(alertManager);
-    private BloodSaturationChecker bloodSaturationChecker = new BloodSaturationChecker(alertManager);
-    private CombinedAlertChecker combinedAlertChecker = new CombinedAlertChecker(alertManager);
-    private ECGDataChecker ecgDataChecker = new ECGDataChecker(alertManager);
+    BloodPressureChecker bloodPressureChecker = new BloodPressureChecker(alertManager);
+    BloodSaturationChecker bloodSaturationChecker = new BloodSaturationChecker(alertManager);
+    CombinedAlertChecker combinedAlertChecker = new CombinedAlertChecker(alertManager);
+    ECGDataChecker ecgDataChecker = new ECGDataChecker(alertManager);
 
     /**
      * Constructs an {@code AlertGenerator} with a specified {@code DataStorage}.
@@ -34,9 +34,8 @@ public class AlertGenerator {
     /**
      * Evaluates the specified patient's data to determine if any alert conditions
      * are met. If a condition is met, an alert is triggered via the
-     * {@link #triggerAlert}
-     * method. This method should define the specific conditions under which an
-     * alert
+     * {@link #triggerAlert} method. 
+     * This method should define the specific conditions under which an alert
      * will be triggered.
      *
      * @param patient the patient data to evaluate for alert conditions

@@ -11,20 +11,30 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
- class FileDataReaderTest {
-
-    
+/**
+ * Unit tests for the {@link FileDataReader} class.
+ */
+class FileDataReaderTest {
 
     private DataStorage dataStorage;
     private FileDataReader fileDataReader;
 
+    /**
+     * Sets up the test environment before each test.
+     * Initializes the DataStorage and FileDataReader instances.
+     */
     @BeforeEach
     public void setUp() {
         dataStorage = new DataStorage();
         fileDataReader = new FileDataReader(dataStorage);
     }
 
+    /**
+     * Tests the readData method of the FileDataReader.
+     * Verifies that data is correctly read from a file and stored in the DataStorage.
+     * 
+     * @throws IOException if an I/O error occurs while creating or writing to the temporary file.
+     */
     @Test
     public void testReadData() throws IOException {
         // Create a temporary file with sample data
@@ -52,6 +62,10 @@ import static org.junit.jupiter.api.Assertions.*;
         Files.deleteIfExists(tempFile);
     }
 
+    /**
+     * Tests the processLine method of the FileDataReader.
+     * Verifies that a single line of data is correctly processed and stored in the DataStorage.
+     */
     @Test
     public void testProcessLine() {
         String line = "1,161803398874,98.6,temperature";

@@ -2,6 +2,7 @@ package com.alerts;
 
 public class AlertManager {
 
+    
     public void triggerAlert(Alert alert) {
         // Implementation might involve logging the alert or notifying staff
         System.out.println("Alert Triggered: " + alert.getCondition() + " for Patient ID: " + alert.getPatientId());
