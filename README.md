@@ -68,3 +68,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## UML Class Diagrams and Documentation
 We've added UML class diagrams and documentation to illustrate the structure and relationships of the classes in the data generator project. You can find them in the uml_models directory.
+
+## Test Result
+I have made a screanshot for the converge Report. You can find it in the test_result directory.
