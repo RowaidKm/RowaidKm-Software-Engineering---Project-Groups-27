@@ -1,37 +1,22 @@
 package com.alerts;
 
 /**
-<<<<<<< HEAD
- * Represents an alert.
- * This class encapsulates the details of an alert including the patient ID, the condition that triggered the alert,
- * and the timestamp of when the alert was triggered.
-=======
- * Represents an alert for a specific patient condition.
- * This class stores all necessary details for an alert, including the patient ID,
+ * Represents an alert for a patient.
+ * This class encapsulates the information related to an alert, such as the patient ID,
  * the condition that triggered the alert, and the timestamp when the alert was generated.
->>>>>>> 3532c14 ( Finishing the Unit Tests)
  */
 public class Alert {
 
-<<<<<<< HEAD
-    private int patientId; // The ID of the patient for whom the alert is generated
-    private String condition; // The condition that triggered the alert
-    private long timestamp; // The timestamp when the alert was triggered
+    private int patientId;
+    private String condition;
+    private long timestamp;
 
     /**
      * Constructs an Alert object with the specified patient ID, condition, and timestamp.
-     * 
-     * @param patientId  The ID of the patient for whom the alert is generated.
-     * @param condition  The condition that triggered the alert.
-     * @param timestamp  The timestamp when the alert was triggered.
-=======
-    /**
-     * Constructs a new Alert with specified details.
      *
-     * @param patientId the unique identifier for the patient
-     * @param condition the condition that triggered the alert
-     * @param timestamp the time at which the alert was generated, in milliseconds since epoch
->>>>>>> 3532c14 ( Finishing the Unit Tests)
+     * @param patientId The ID of the patient associated with the alert.
+     * @param condition The condition or reason that triggered the alert.
+     * @param timestamp The timestamp when the alert was generated.
      */
     public Alert(int patientId, String condition, long timestamp) {
         this.patientId = patientId;
@@ -40,45 +25,27 @@ public class Alert {
     }
 
     /**
-<<<<<<< HEAD
-     * Returns the ID of the patient for whom the alert is generated.
-     * 
-     * @return The patient ID.
-=======
-     * Returns the patient ID associated with this alert.
+     * Gets the ID of the patient associated with the alert.
      *
-     * @return the patient ID
->>>>>>> 3532c14 ( Finishing the Unit Tests)
+     * @return The patient ID.
      */
     public int getPatientId() {
         return patientId;
     }
 
     /**
-<<<<<<< HEAD
-     * Returns the condition that triggered the alert.
-     * 
-     * @return The condition.
-=======
-     * Returns the condition that triggered this alert.
+     * Gets the condition or reason that triggered the alert.
      *
-     * @return the condition
->>>>>>> 3532c14 ( Finishing the Unit Tests)
+     * @return The condition.
      */
     public String getCondition() {
         return condition;
     }
 
     /**
-<<<<<<< HEAD
-     * Returns the timestamp when the alert was triggered.
-     * 
-     * @return The timestamp.
-=======
-     * Returns the timestamp when this alert was generated.
+     * Gets the timestamp when the alert was generated.
      *
-     * @return the timestamp in milliseconds since epoch
->>>>>>> 3532c14 ( Finishing the Unit Tests)
+     * @return The timestamp.
      */
     public long getTimestamp() {
         return timestamp;

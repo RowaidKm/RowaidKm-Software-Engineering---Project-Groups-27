@@ -6,26 +6,79 @@ import org.java_websocket.server.WebSocketServer;
 import java.net.InetSocketAddress;
 
 /**
- * The WebSocketOutputStrategy class represents an output strategy that sends data over a WebSocket connection.
- * It implements the OutputStrategy interface.
+ * WebSocketOutputStrategy is a WebSocket server that handles incoming WebSocket connections and messages.
+ * It extends the WebSocketServer from the org.java_websocket library.
  */
-public class WebSocketOutputStrategy implements OutputStrategy {
-
-    private WebSocketServer server;
+public class WebSocketOutputStrategy extends WebSocketServer implements OutputStrategy {
 
     /**
-     * Constructs a WebSocketOutputStrategy object that creates a WebSocket server on the specified port.
+     * Constructs a new WebSocketOutputStrategy.
      *
-     * @param port The port on which the WebSocket server will be created.
+     * @param address the address to bind the WebSocket server to.
      */
-    public WebSocketOutputStrategy(int port) {
-        server = new SimpleWebSocketServer(new InetSocketAddress(port));
-        System.out.println("WebSocket server created on port: " + port + ", listening for connections...");
-        server.start();
+    public WebSocketOutputStrategy(InetSocketAddress address) {
+        super(address);
     }
 
     /**
-     * Outputs the specified data for the patient over the WebSocket connection.
+     * Called when a new WebSocket connection is opened.
+     *
+     * @param conn       the WebSocket connection object.
+     * @param handshake  the handshake data received from the client.
+     */
+    @Override
+    public void onOpen(WebSocket conn, org.java_websocket.handshake.ClientHandshake handshake) {
+        System.out.println("New connection from " + conn.getRemoteSocketAddress());
+    }
+
+    /**
+     * Called when a WebSocket connection is closed.
+     *
+     * @param conn       the WebSocket connection object.
+     * @param code       the status code indicating the reason for closure.
+     * @param reason     the reason for closure.
+     * @param remote     whether the closure was initiated by the remote host.
+     */
+    @Override
+    public void onClose(WebSocket conn, int code, String reason, boolean remote) {
+        System.out.println("Closed " + conn.getRemoteSocketAddress() + " with exit code " + code + " additional info: " + reason);
+    }
+
+    /**
+     * Called when a message is received from a WebSocket connection.
+     *
+     * @param conn    the WebSocket connection object.
+     * @param message the message received from the client.
+     */
+    @Override
+    public void onMessage(WebSocket conn, String message) {
+        // Not used in this context
+    }
+
+    /**
+     * Called when an error occurs.
+     *
+     * @param conn the WebSocket connection object, if the error is associated with a specific connection.
+     * @param ex   the exception that occurred.
+     */
+    @Override
+    public void onError(WebSocket conn, Exception ex) {
+        ex.printStackTrace();
+        if (conn != null) {
+            // some errors like port binding failed may not be assignable to a specific websocket
+        }
+    }
+
+    /**
+     * Called when the WebSocket server starts successfully.
+     */
+    @Override
+    public void onStart() {
+        System.out.println("Server started successfully");
+    }
+
+    /**
+     * Outputs the specified data for the patient to connected WebSocket clients.
      *
      * @param patientId The ID of the patient.
      * @param timestamp The timestamp of the data.
@@ -36,49 +89,21 @@ public class WebSocketOutputStrategy implements OutputStrategy {
     public void output(int patientId, long timestamp, String label, String data) {
         String message = String.format("%d,%d,%s,%s", patientId, timestamp, label, data);
         // Broadcast the message to all connected clients
-        for (WebSocket conn : server.getConnections()) {
+        for (WebSocket conn : getConnections()) {
             conn.send(message);
         }
     }
 
     /**
-     * The SimpleWebSocketServer class represents a simple WebSocket server implementation.
-     * It extends the WebSocketServer class provided by the java_websocket library.
+     * The main method to create and start the WebSocketOutputStrategy server.
+     *
+     * @param args command line arguments (not used).
      */
-    private static class SimpleWebSocketServer extends WebSocketServer {
-
-        /**
-         * Constructs a SimpleWebSocketServer object with the specified address.
-         *
-         * @param address The address on which the server will listen for connections.
-         */
-        public SimpleWebSocketServer(InetSocketAddress address) {
-            super(address);
-        }
-
-        @Override
-        public void onOpen(WebSocket conn, org.java_websocket.handshake.ClientHandshake handshake) {
-            System.out.println("New connection: " + conn.getRemoteSocketAddress());
-        }
-
-        @Override
-        public void onClose(WebSocket conn, int code, String reason, boolean remote) {
-            System.out.println("Closed connection: " + conn.getRemoteSocketAddress());
-        }
-
-        @Override
-        public void onMessage(WebSocket conn, String message) {
-            // Not used in this context
-        }
-
-        @Override
-        public void onError(WebSocket conn, Exception ex) {
-            ex.printStackTrace();
-        }
-
-        @Override
-        public void onStart() {
-            System.out.println("Server started successfully");
-        }
+    public static void main(String[] args) {
+        String host = "localhost";
+        int port = 8080;
+        WebSocketOutputStrategy server = new WebSocketOutputStrategy(new InetSocketAddress(host, port));
+        server.start();
+        System.out.println("WebSocket server started on port: " + server.getPort());
     }
 }

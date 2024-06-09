@@ -1,5 +1,6 @@
 package com.data_management;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -83,13 +84,22 @@ public class DataStorage {
      * @param args command line arguments
      */
     public static void main(String[] args) {
-        // DataReader is not defined in this scope, should be initialized appropriately.
-        // DataReader reader = new SomeDataReaderImplementation("path/to/data");
         DataStorage storage = new DataStorage();
+        FileDataReader fileDataReader = new FileDataReader(storage);
 
-        // Assuming the reader has been properly initialized and can read data into the
-        // storage
-        // reader.readData(storage);
+        // Read initial data from a file
+        try {
+            fileDataReader.readData("path/to/initial/data.csv");
+        } catch (IOException e) {
+            System.err.println("Error reading initial data: " + e.getMessage());
+        }
+
+        // Connect to WebSocket for real-time data
+        try {
+            fileDataReader.connectToWebSocket("ws://localhost:8080");
+        } catch (IOException e) {
+            System.err.println("Error connecting to WebSocket: " + e.getMessage());
+        }
 
         // Example of using DataStorage to retrieve and print records for a patient
         List<PatientRecord> records = storage.getRecords(1, 1700000000000L, 1800000000000L);

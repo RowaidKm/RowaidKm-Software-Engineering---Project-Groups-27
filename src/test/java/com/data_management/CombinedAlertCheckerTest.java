@@ -39,6 +39,6 @@ class CombinedAlertCheckerTest {
         String expectedOutput = "Alert Triggered: Hypotensive Hypoxemia Alert for Patient ID: 1\n";
         
         // Verify that the alert was triggered correctly
-        assertEquals(expectedOutput, outContent.toString());
+        assertEquals(expectedOutput,outContent.toString());
     }
 }

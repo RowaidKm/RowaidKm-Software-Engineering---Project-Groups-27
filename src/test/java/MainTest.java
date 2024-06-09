@@ -1,16 +1,15 @@
 import org.junit.jupiter.api.Test;
 
-
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 /**
- * Unit tests for the {@link Main} class.
+ * Unit tests for the Main class.
  */
 public class MainTest {
 
     /**
-     * Tests the main method of the Main class with DataStorage as the argument.
-     * Verifies that no exceptions are thrown when running with the DataStorage argument.
+     * Tests the main method of the Main class with the DataStorage argument.
+     * Verifies that the main method does not throw an exception when running DataStorage.
      */
     @Test
     public void testMainWithDataStorage() {
@@ -23,7 +22,7 @@ public class MainTest {
 
     /**
      * Tests the main method of the Main class with no arguments.
-     * Verifies that no exceptions are thrown when running with the default behavior (HealthDataSimulator).
+     * Verifies that the main method does not throw an exception when running HealthDataSimulator by default.
      */
     @Test
     public void testMainWithHealthDataSimulator() {
@@ -32,5 +31,28 @@ public class MainTest {
 
         // Call the main method with no arguments (default to HealthDataSimulator) and assert that it does not throw an exception
         assertDoesNotThrow(() -> Main.main(args));
+    }
+
+    /**
+     * Tests the main method of the Main class with an unknown argument.
+     * Verifies that the main method defaults to HealthDataSimulator and does not throw an exception.
+     */
+    @Test
+    public void testMainWithUnknownArgument() {
+        // Setting up arguments to run an unknown argument
+        String[] args = {"Unknown"};
+
+        // Call the main method with an unknown argument and assert that it does not throw an exception
+        assertDoesNotThrow(() -> Main.main(args));
+    }
+
+    /**
+     * Tests the main method directly without any arguments.
+     * Verifies that the main method does not throw an exception.
+     */
+    @Test
+    public void testMainMethodDirectly() {
+        // Call the main method directly and assert that it does not throw an exception
+        assertDoesNotThrow(() -> Main.main(new String[]{}));
     }
 }
